@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Modal, Form, Input, InputNumber, Upload, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-const AddNewProductModal = ({ visible, onCancel, onCreate }) => {
+const AddNewProductModal = ({ visible, onCancel, onCreate, isAdding }) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -113,6 +113,7 @@ const AddNewProductModal = ({ visible, onCancel, onCreate }) => {
               <InputNumber min={0} step={0.1} />
             </Form.Item>
           </Form>
+          {isAdding? <p>Your new product is adding to database</p>: <></>}
         </Modal>
       }
       ;
