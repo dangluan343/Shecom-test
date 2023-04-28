@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Modal, Form, Input, InputNumber, Upload, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 const AddNewProductModal = ({ visible, onCancel, onCreate }) => {
@@ -86,12 +86,6 @@ const AddNewProductModal = ({ visible, onCancel, onCreate }) => {
               getValueFromEvent={(e) =>
                 Array.isArray(e) ? e : e && e.fileList
               }
-              //   rules={[
-              //     {
-              //       required: true,
-              //       message: "Please upload at least one sub product image",
-              //     },
-              //   ]}
             >
               <Upload>
                 <Button icon={<PlusOutlined />}>Click to upload</Button>
