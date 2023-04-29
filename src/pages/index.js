@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { supabase } from "../utils/supabase";
+
+import Link from "next/link";
+import { Menu } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -119,7 +119,14 @@ export default function Home() {
           </a>
         </div>
       </main> */}
-      
+      <Menu mode="horizontal" style={{height: '100vh'}}>
+        <Menu.Item key="dashboard">
+          <Link href="/admin-dashboard">Admin Dashboard</Link>
+        </Menu.Item>
+        <Menu.Item key="products">
+          <Link href="/products">Products</Link>
+        </Menu.Item>
+      </Menu>
     </>
   );
 }
