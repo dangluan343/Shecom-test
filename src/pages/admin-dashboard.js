@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table } from "antd";
+import { Button, Divider, Table } from "antd";
 import { productData, columns } from "../utils/staticData";
 import { supabase } from "../utils/supabase";
 import AddNewProductModal from "../components/AddNewProductModal";
@@ -82,7 +82,8 @@ const AdminDashboardPage = () => {
   }
 
   return (
-    <Layout>
+    <div style={{height: '100vh'}}>
+      <Layout style={{height: '100%'}}>
       <StyledSidebar width={250} breakpoint="lg" collapsedWidth="0" />
       <Layout>
         <Content>
@@ -105,6 +106,7 @@ const AdminDashboardPage = () => {
         </Content>
       </Layout>
     </Layout>
+    </div>
   );
 };
 
