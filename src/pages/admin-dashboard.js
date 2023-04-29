@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Table } from "antd";
 import { productData, columns } from "../utils/staticData";
 import { supabase } from "../utils/supabase";
 import AddNewProductModal from "../components/AddNewProductModal";
 
 const AdminDashboardPage = () => {
+  const [products, setProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
+
+  // load products on initial page
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  async function fetchProducts() {
+    let { data: products, error } = await supabase.from("products").select("*");
+    if (error) console.log("Error fetching products:", error.message);
+    else setProducts(products);
+  }
   function showModal() {
     setIsModalOpen(true);
   }
@@ -35,15 +47,15 @@ const AdminDashboardPage = () => {
     const mainImageKey = await uploadImage(mainImage[0].originFileObj);
     const subImageArray = subImages;
     let subImageKeys = [];
-    if(subImageArray) {
+    if (subImageArray) {
       const subImageLength = subImageArray.length;
       subImageKeys = await Promise.all(
-          [...Array(subImageLength)].map((_, i) =>
-            uploadImage(subImageArray[i].originFileObj)
-          )
-        );
+        [...Array(subImageLength)].map((_, i) =>
+          uploadImage(subImageArray[i].originFileObj)
+        )
+      );
     }
-   
+
     // add new product to the database
     let { data, error } = await supabase.from("products").insert({
       name: name,
@@ -56,10 +68,12 @@ const AdminDashboardPage = () => {
     if (error) {
       console.log("Error adding product:", error.message);
       alert(error.message);
-      setIsAdding(false)
+      setIsAdding(false);
     } else {
       alert("your new product created successfully");
-      setIsAdding(false)
+      setIsAdding(false);
+      // Reload the product data
+      window.location.reload();
     }
   }
 
@@ -69,7 +83,12 @@ const AdminDashboardPage = () => {
       <Button type="primary" onClick={showModal}>
         Add Product
       </Button>
-      <Table dataSource={productData} columns={columns} />;
+      <Table
+        dataSource={products}
+        columns={columns}
+        pagination={{ pageSize: 5 }}
+      />
+      ;
       <AddNewProductModal
         visible={isModalOpen}
         onCancel={hideModal}

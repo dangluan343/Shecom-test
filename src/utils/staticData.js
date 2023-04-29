@@ -1,3 +1,4 @@
+const productBucketURL = process.env.NEXT_PUBLIC_SUPABASE_PRODUCTS_BUCKET_URL;
 // Product data
 export const productData = [
   {
@@ -5,8 +6,8 @@ export const productData = [
     name: "Roses",
     description:
       "A bouquet of red roses is a classic symbol of love and affection. Give them to someone special to show how much you care.",
-    mainImage: "https://s.net.vn/trsP",
-    subImages: [
+    main_image: "https://s.net.vn/trsP",
+    sub_images: [
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
@@ -20,8 +21,8 @@ export const productData = [
     name: "Lilies",
     description:
       "A bouquet of white lilies is a beautiful and elegant way to express sympathy, honor a loved one, or celebrate a special occasion.",
-    mainImage: "https://s.net.vn/trsP",
-    subImages: [
+    main_image: "https://s.net.vn/trsP",
+    sub_images: [
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
@@ -35,8 +36,8 @@ export const productData = [
     name: "Tulips",
     description:
       "A bouquet of colorful tulips is a cheerful and uplifting way to brighten someone's day.",
-    mainImage: "https://s.net.vn/trsP",
-    subImages: [
+    main_image: "https://s.net.vn/trsP",
+    sub_images: [
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
@@ -50,8 +51,8 @@ export const productData = [
     name: "Sunflowers",
     description:
       "A bouquet of sunflowers is a bold and cheerful way to bring a little sunshine into someone's life.",
-    mainImage: "https://s.net.vn/trsP",
-    subImages: [
+    main_image: "https://s.net.vn/trsP",
+    sub_images: [
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
       "https://s.net.vn/trsP",
@@ -76,29 +77,25 @@ export const columns = [
   },
   {
     title: "Main Image",
-    dataIndex: "mainImage",
-    key: "mainImage",
+    dataIndex: "main_image",
+    key: "main_image",
     render: (text, record) => {
-      // console.log(record, text);
+      const imageLink = productBucketURL + text;
       return (
-        <img
-          src={record.mainImage}
-          alt={record.name}
-          style={{ maxWidth: 100 }}
-        />
+        <img src={imageLink} alt={record.name} style={{ maxWidth: 100 }} />
       );
     },
   },
   {
     title: "Sub Images",
-    dataIndex: "subImages",
-    key: "subImages",
-    render: (subImages) => (
-      <ul style={{listStyle:'none', display:'flex', gap:'5px'}}>
-        {subImages.map((subImage, index) => (
+    dataIndex: "sub_images",
+    key: "sub_images",
+    render: (sub_images) => (
+      <ul style={{ listStyle: "none", display: "flex", gap: "5px" }}>
+        {sub_images.map((subImage, index) => (
           <li key={index}>
             <img
-              src={subImage}
+              src={`${productBucketURL}${subImage}`}
               alt={`Sub Image ${index}`}
               style={{ maxWidth: 100 }}
             />
@@ -114,7 +111,7 @@ export const columns = [
   },
   {
     title: "Promotion Price",
-    dataIndex: "promotionPrice",
-    key: "promotionPrice",
+    dataIndex: "promo_price",
+    key: "promo_price",
   },
 ];
