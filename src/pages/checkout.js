@@ -11,7 +11,7 @@ const containerStyle = {
   alignItems: "center",
 };
 
-const checkout = ({ supabase }) => {
+const Checkout = ({ supabase }) => {
   const [purchasedItem, setPurchasedItem] = useState([]);
   const router = useRouter()
 
@@ -131,4 +131,4 @@ const checkout = ({ supabase }) => {
   );
 };
 
-export default checkout;
+export default Checkout;

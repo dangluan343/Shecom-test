@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col } from "antd";
 import ProductCard from "../components/ProductCard";
 import CartSidebar from '../components/CartSidebar'
-const productsPage = ({ supabase }) => {
+const ProductsPage = ({ supabase }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([])
 
@@ -74,4 +74,4 @@ const productsPage = ({ supabase }) => {
   );
 };
 
-export default productsPage;
+export default ProductsPage;
