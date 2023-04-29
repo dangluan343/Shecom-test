@@ -12,12 +12,14 @@
     "@supabase/supabase-js": "^2.21.0",
     "antd": "^5.4.6",
     "eslint": "8.39.0",
-    "eslint-config-next": "13.3.1",
     "next": "^13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.3.10",
     "supabase": "^1.52.2",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-next": "^13.3.1"
   }
 }
