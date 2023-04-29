@@ -116,7 +116,7 @@ const AddNewProductModal = ({ visible, onCancel, onCreate, isAdding }) => {
           {isAdding? <p>Your new product is adding to database</p>: <></>}
         </Modal>
       }
-      ;
+      
     </>
   );
 };

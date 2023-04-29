@@ -3,6 +3,10 @@ import { Button, Table } from "antd";
 import { productData, columns } from "../utils/staticData";
 import { supabase } from "../utils/supabase";
 import AddNewProductModal from "../components/AddNewProductModal";
+import StyledSidebar from "../components/StyleSidebar";
+import {Layout} from "antd";
+
+const {Content} = Layout;
 
 const AdminDashboardPage = () => {
   const [products, setProducts] = useState([]);
@@ -78,24 +82,29 @@ const AdminDashboardPage = () => {
   }
 
   return (
-    <div>
-      <h1>Admin Product Dashboard</h1>
-      <Button type="primary" onClick={showModal}>
-        Add Product
-      </Button>
-      <Table
-        dataSource={products}
-        columns={columns}
-        pagination={{ pageSize: 5 }}
-      />
-      ;
-      <AddNewProductModal
-        visible={isModalOpen}
-        onCancel={hideModal}
-        onCreate={onCreate}
-        isAdding={isAdding}
-      />
-    </div>
+    <Layout>
+      <StyledSidebar width={250} breakpoint="lg" collapsedWidth="0" />
+      <Layout>
+        <Content>
+          <h1>Admin Product Dashboard</h1>
+          <Button type="primary" onClick={showModal}>
+            Add Product
+          </Button>
+          <Table
+            dataSource={products}
+            columns={columns}
+            pagination={{ pageSize: 5 }}
+          />
+          
+          <AddNewProductModal
+            visible={isModalOpen}
+            onCancel={hideModal}
+            onCreate={onCreate}
+            isAdding={isAdding}
+          />
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 
