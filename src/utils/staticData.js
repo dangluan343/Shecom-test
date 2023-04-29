@@ -64,7 +64,7 @@ export const productData = [
 ];
 
 // Table Header name
-export const columns = [
+export const columnsProduct = [
   {
     title: "Name",
     dataIndex: "name",
@@ -115,3 +115,31 @@ export const columns = [
     key: "promo_price",
   },
 ];
+
+export const columnsOrder = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Phone",
+    dataIndex: "phone",
+    key: "phone",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
+    title: "Order Id",
+    dataIndex: "id",
+    key: "id",
+  },
+]

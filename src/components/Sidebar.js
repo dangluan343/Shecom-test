@@ -1,21 +1,19 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import Link from "next/link";
 const { Sider } = Layout;
 
-const Sidebar = () => {
+const Sidebar = ({changeTab, currentTab}) => {
+
   return (
     <Sider width={250} >
-      <Menu mode="inline" >
-        <Menu.Item key="1">
-          <Link href="/admin-dashboard">
-            Admin Dashboar
-          </Link>
+      <Menu mode="inline" defaultSelectedKeys={[currentTab]} onClick={(e) => {
+        changeTab(e.key);
+      }}>
+        <Menu.Item key="dashboard">
+            Admin Dashboard
         </Menu.Item>
-        <Menu.Item key="2">
-          <Link href="/orders">
+        <Menu.Item key="orders">
             Orders
-          </Link>
         </Menu.Item>
       </Menu>
     </Sider>
